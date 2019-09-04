@@ -1,5 +1,8 @@
 <template>
-  <el-container class="main">
+  <el-container class="main"
+    @click.native="handleSwitch"
+    :style="{backgroundImage:'url('+require('@assets/images/bg' + imgIndex + '.jpg')+')'}"
+  >
     <ul class="friend-link">
       <li v-for="(item,index) of linkList" :key="index">
         <router-link :to="item.path">
@@ -16,11 +19,34 @@ export default {
   data () {
     return {
       linkList: [
-        {label:'CSS3', path: '/waterfall_flow_layout/CSS3'},
-        {label:'JavaScript', path: '/waterfall_flow_layout/JavaScript'},
-        {label:'jQuery', path: '/waterfall_flow_layout/jQuery'}
-      ]
+        {label:'CSS3', path: '/CSS3'},
+        {label:'JavaScript', path: '/JavaScript'},
+        {label:'jQuery', path: '/jQuery'}
+      ],
+      imgIndex: 1
     }
   },
+  mounted () {
+    this.setIndex();
+  },
+  methods: {
+    setIndex () {
+      let that = this;
+      var interval = setInterval(function(){
+        that.imgIndex = that.imgIndex + 1;
+        if(that.imgIndex === 9) {
+          clearInterval(interval);
+          that.imgIndex = 0;
+        }
+        console.log(that.imgIndex)
+        /* if(that.imgIndex === 9) {
+          that.imgIndex = 1;
+        } */
+      }, 2000);
+    },
+    handleSwitch () {
+      this.setIndex();
+    }
+  }
 }
 </script>

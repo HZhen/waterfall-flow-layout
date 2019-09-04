@@ -15,7 +15,7 @@ const ROUTES = [
     component: () => import('@/components/main/main.vue')
   },
   {
-    path: 'CSS3',
+    path: '/CSS3',
     name: 'CSS3',
     meta: {
       title: 'CSS3-瀑布流布局',
@@ -23,7 +23,7 @@ const ROUTES = [
     component: () => import('@views/CSS3/index.vue')
   },
   {
-    path: 'JavaScript',
+    path: '/JavaScript',
     name: 'JavaScript',
     meta: {
       title: 'JavaScript-瀑布流布局',
@@ -31,7 +31,7 @@ const ROUTES = [
     component: () => import('@views/JavaScript/index.vue')
   },
   {
-    path: 'jQuery',
+    path: '/jQuery',
     name: 'jQuery',
     meta: {
       title: 'jQuery-瀑布流布局',

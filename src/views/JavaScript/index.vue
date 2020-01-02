@@ -31,9 +31,9 @@ export default {
     }
   },
   mounted () {
-   /*  window.onload =  () => {
-      
-    } */
+    window.onload =  () => {
+      this.waterfall('main','box');
+    } 
     this.$nextTick(() => {
       this.waterfall('main','box')
     })
@@ -52,26 +52,29 @@ export default {
     let hArr = [];
     let minH = '';
     let index =''
-    for (let i = 0;i<oBoxs.length;i++) {
-      if(i<cols) {
-        hArr.push(oBoxs[i].offsetHeight)
-      } else {
+    for (var x = 0;x<oBoxs.length;x++) {
+      if(x<cols) {
+        hArr.push(oBoxs[x].offsetHeight)
+        console.log(oBoxs[x]);
+      } 
+      else {
         minH = Math.min.apply(null,hArr)
         index = this.getMinhIndex(hArr,minH);
-        oBoxs[i].style.position = 'absolute';
-        oBoxs[i].style.top = minH + 'px';
-        // oBoxs[i].style.left = oBoxw*index + 'px';
-        oBoxs[i].style.left = oBoxs[index].offsetLeft + 'px';
-        hArr[index]+=oBoxs[i].offsetHeight;
+        oBoxs[x].style.position = 'absolute';
+        oBoxs[x].style.top = minH + 'px';
+        oBoxs[x].style.left = oBoxw*index + 'px';
+        // oBoxs[i].style.left = oBoxs[index].offsetLeft + 'px';
+        hArr[index]+=oBoxs[index].offsetHeight;
       }
     }
-     console.log(hArr);
+    console.log(hArr);
     },
     // 根据class获取元素
     getByClass (parent,clsName) {
       let boxArr = new Array(), /* 用来存储获取到所有class为box的元素 */
-      oElements = parent.getElementsByTagName('*')
-      for (let i = 0;i < oElements.length; i ++) {
+      oElements = parent.getElementsByTagName('*');
+      console.log(oElements);
+      for (var i = 0;i < oElements.length; i ++) {
         if(oElements[i].className == clsName) {
           boxArr.push(oElements[i]);
         }
